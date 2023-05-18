@@ -1,6 +1,6 @@
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "3,4"
-from Network import Actor, Critic
+from model.Network import Actor, Critic
 import torch
 from tqdm import tqdm
 import numpy as np

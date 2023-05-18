@@ -8,14 +8,13 @@ import numpy as np
 import pandas as pd
 from utils.Evaluate import Evaluator
 from torch import nn
-import pickle
 import math
 import argparse
 seed=22
 torch.manual_seed(seed)
 torch.cuda.manual_seed(seed)
 torch.cuda.manual_seed_all(seed)
-from train.trainer import  train
+from train.trainer import  test
 parser = argparse.ArgumentParser()
 parser.add_argument('--action', default='train')
 parser.add_argument('--vaild', default="./data/dataset2")
@@ -28,7 +27,6 @@ args = parser.parse_args()
 epoch_number = args.epochs
 n_pins = args.n_pint
 model_dir = args.model_dir
-#训练时采用精确线长计算还是边界差近似算法：
 accuary_reward = args.accuary_reward
 batch_size = 254
 lr_a = 0.000005
@@ -54,8 +52,9 @@ vaild_set = pd.read_csv(args.vaild)
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-train(batch_size,n_pins,accumulation, actor, critic,epoch_number,device,max_garda,max_gardc,evaluator,model_dir,vaild_set,accuary_reward,lr_a, lr_c)
+actor.load_state_dict(torch.load(os.path.join(model_dir,"actor.pth")))
+critic.load_state_dict(torch.load(os.path.join(model_dir,"critic.pth")))
+test(actor, critic,device,evaluator,vaild_set)
 
 
 

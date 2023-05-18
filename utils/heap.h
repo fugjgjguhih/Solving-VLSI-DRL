@@ -1,12 +1,12 @@
-typedef struct HNode * heap;//½á¹¹ÌåÖ¸Õë
+typedef struct HNode * heap;//ï¿½á¹¹ï¿½ï¿½Ö¸ï¿½ï¿½
 struct node{
 	double xx;
 	double yy;
 };
 struct HNode{
-    node *Data;//±íÊ¾¶ÑµÄÊı×é ´óĞ¡ÒªÔÚÓÃ»§ÊäÈëµÄÔªËØ¸öÊıÉÏ+1
-    int Size;//Êı×éÀïÒÑÓĞµÄÔªËØ(²»°üº¬a[0]) 
-    int Capacity; //Êı×éµÄÊıÁ¿ÉÏÏŞ
+    node *Data;//ï¿½ï¿½Ê¾ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¡Òªï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½+1
+    int Size;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½Ôªï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a[0]) 
+    int Capacity; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }minHeap;
 bool cmp1(struct node a,struct node b)
 {
@@ -18,15 +18,15 @@ bool cmp2(struct node a,struct node b)
 	if(a.yy<b.yy) return true;
 	else return false;
 }
-typedef heap MaxHeap; //¶¨ÒåÒ»¸ö×î´ó¶Ñ
+typedef heap MaxHeap; //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 bool insertMinHeap(minHeap heap, int x){
-    //ÅĞ¶ÏÊÇ·ñÂúÁË
+    //ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
     if (heap->Size == heap->Capacity){
         return false;
     }
     int p = ++heap->Size;
     for (; heap->data[p/2]<x; p/=2) {
-		//ÕâÀïÊÇ×îĞ¡¶Ñ  ËùÒÔÔÚa[0]Î»ÖÃµÄ¸ÚÉÚ±£´æÁË±ÈÊı×éÖĞËùÓĞÔªËØ¶¼Ğ¡µÄÔªËØ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a[0]Î»ï¿½ÃµÄ¸ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø¶ï¿½Ğ¡ï¿½ï¿½Ôªï¿½ï¿½
         heap->data[p] = heap->data[p/2];
     }
     heap->data[p] = x;
@@ -38,13 +38,13 @@ int deleteFromMinHeapy(minHeap heap){
     int parent,child;
     for (parent = 1; parent*2<heap->Size; parent=child) {
         child = parent*2;
-            //×¢ÒâÕâÀïÊÇ´æÔÚÓÒ×Ó½Úµã ²¢ÇÒ ÓÒ×Ó½Úµã±È×ó×Ó½ÚµãĞ¡    
+            //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½Ğ¡    
         if (child!=heap->Size && heap->data[child] > heap->data[child+1]) {
             child++;
-            //Èç¹û±ÈÓÒ×Ó½Úµã»¹Ğ¡
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµã»¹Ğ¡
             if (heap->data[child]>last) {
                 break;
-            }else{//ÏÂÂË
+            }else{//ï¿½ï¿½ï¿½ï¿½
                 heap->data[parent] = heap->data[child];
             }
         }
@@ -53,13 +53,13 @@ int deleteFromMinHeapy(minHeap heap){
     return top;
 }
 bool insertMinHeapy(minHeap heap, node x){
-    //ÅĞ¶ÏÊÇ·ñÂúÁË
+    //ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
     if (heap->Size == heap->Capacity){
         return false;
     }
     int p = ++heap->Size;
     for (; heap->data[p/2]<x; p/=2) {
-		//ÕâÀïÊÇ×îĞ¡¶Ñ  ËùÒÔÔÚa[0]Î»ÖÃµÄ¸ÚÉÚ±£´æÁË±ÈÊı×éÖĞËùÓĞÔªËØ¶¼Ğ¡µÄÔªËØ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a[0]Î»ï¿½ÃµÄ¸ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø¶ï¿½Ğ¡ï¿½ï¿½Ôªï¿½ï¿½
         heap->data[p] = heap->data[p/2];
     }
     heap->data[p] = x;
@@ -67,13 +67,13 @@ bool insertMinHeapy(minHeap heap, node x){
 }
 
 bool insertMinHeapx(minHeap heap, node x){
-    //ÅĞ¶ÏÊÇ·ñÂúÁË
+    //ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
     if (heap->Size == heap->Capacity){
         return false;
     }
     int p = ++heap->Size;
     for (; cmp1(heap->data[p/2],x); p/=2) {
-		//ÕâÀïÊÇ×îĞ¡¶Ñ  ËùÒÔÔÚa[0]Î»ÖÃµÄ¸ÚÉÚ±£´æÁË±ÈÊı×éÖĞËùÓĞÔªËØ¶¼Ğ¡µÄÔªËØ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a[0]Î»ï¿½ÃµÄ¸ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø¶ï¿½Ğ¡ï¿½ï¿½Ôªï¿½ï¿½
         heap->data[p] = heap->data[p/2];
     }
     heap->data[p] = x;
@@ -85,13 +85,13 @@ int deleteFromMinHeapy(minHeap heap){
     int parent,child;
     for (parent = 1; parent*2<heap->Size; parent=child) {
         child = parent*2;
-            //×¢ÒâÕâÀïÊÇ´æÔÚÓÒ×Ó½Úµã ²¢ÇÒ ÓÒ×Ó½Úµã±È×ó×Ó½ÚµãĞ¡    
+            //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½Ğ¡    
         if (child!=heap->Size && heap->data[child] > heap->data[child+1]) {
             child++;
-            //Èç¹û±ÈÓÒ×Ó½Úµã»¹Ğ¡
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµã»¹Ğ¡
             if (heap->data[child]>last) {
                 break;
-            }else{//ÏÂÂË
+            }else{//ï¿½ï¿½ï¿½ï¿½
                 heap->data[parent] = heap->data[child];
             }
         }
@@ -105,13 +105,13 @@ int deleteFromMinHeapx(minHeap heap){
     int parent,child;
     for (parent = 1; parent*2<heap->Size; parent=child) {
         child = parent*2;
-            //×¢ÒâÕâÀïÊÇ´æÔÚÓÒ×Ó½Úµã ²¢ÇÒ ÓÒ×Ó½Úµã±È×ó×Ó½ÚµãĞ¡    
+            //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½Ğ¡    
         if (child!=heap->Size && cmp1(heap->data[child+1], heap->data[child])) {
             child++;
-            //Èç¹û±ÈÓÒ×Ó½Úµã»¹Ğ¡
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµã»¹Ğ¡
             if (cmp1(last,heap->data[child])) {
                 break;
-            }else{//ÏÂÂË
+            }else{//ï¿½ï¿½ï¿½ï¿½
                 heap->data[parent] = heap->data[child];
             }
         }

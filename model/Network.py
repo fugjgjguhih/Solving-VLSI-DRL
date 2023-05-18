@@ -82,7 +82,6 @@ class Actor(nn.Module):
         mask.scatter_(dim=1, index=Ut.unsqueeze(1), src=self.zero)
         residual = self.q_l1(q1) + self.q_l2(q2) + self.q_lx(qx) + self.q_ly(qy)
         for i in range(num_p-1):
-
             context = torch.max(context, self.ctx_linear(self.relu(residual)))
             first_q = residual + context
             Ut, p1,mask = self.pTM(input=first_q, mask=mask,context=encoder_outputs)

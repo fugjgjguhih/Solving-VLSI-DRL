@@ -8,11 +8,12 @@ seed =22
 random.seed(seed)
 np.random.seed(seed)
 parser = argparse.ArgumentParser()
-parser.add_argument('--n_pins', default=20,type=int)
+parser.add_argument('--n_pins', default=15,type=int)
 #       生成随机点集
 # n_pins 顶点数
 # num_b = batch 数目
-n_pins = arg.n_pins;
+args = parser.parse_args()
+n_pins = args.n_pins;
 num_b = 2
 batch_size = 256
 sums = batch_size*(num_b)

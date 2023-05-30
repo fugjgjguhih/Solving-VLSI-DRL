@@ -5,7 +5,7 @@ import torch
 def evaluation(V, xes):
     n = V.size(1)   #xes -> torch.long
     batch_size = xes.size(0)
-    edge = torch.zeros((batch_size, n, 8), dtype=torch.int32).cuda()
+    edge = torch.zeros((batch_size, n, 8), dtype=torch.float64).cuda()
     length = 0
     x = V[:,:,0]
     y = V[:,:,1]
@@ -28,6 +28,7 @@ def evaluation(V, xes):
         yg = torch.abs(Yh-Yv)
         xg = torch.abs(Xh-Xv)
         if1 = ((tt == 0) + ((Xh-Xv) == 0) + ((Yh-Yv) == 0))
+        src=torch.min(sel(edge[:,:,2],vt),Yh)*if1+~if1*sel(edge[:,:,2],vt)
         edge[:,:,2].scatter_(dim=1, index=vt,src=torch.min(sel(edge[:,:,2],vt),Yh)*if1+~if1*sel(edge[:,:,2],vt))
         edge[:,:,3].scatter_(dim=1,index=vt,src=torch.max(sel(edge[:,:,3],vt), Yh)*if1+~if1*sel(edge[:,:,3],vt))
         edge[:,:,0].scatter_(dim=1,index=ht,src=torch.min(sel(edge[:,:,0],ht), Xv)*if1+~if1*sel(edge[:,:,0],ht))

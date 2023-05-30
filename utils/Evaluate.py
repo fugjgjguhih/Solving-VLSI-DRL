@@ -33,9 +33,8 @@ class ArrayType:
 class Evaluator:
     def __init__(self):
         cdll_names = {
-            'Darwin': 'libc.dylib',
             'Linux': 'Getfitness.so',
-            'Windows': 'GetFitness.dll'
+            'Windows': 'C:\\Users\\LOA\\Desktop\\VideoUnderstanding\\XSMT\\Solving-VLSI-DRL\\Getfitness.dll'
         }
         #path = os.getcwd() + '/al/libeval.so'
         eval_mod = ctypes.cdll.LoadLibrary(cdll_names[platform.system()])

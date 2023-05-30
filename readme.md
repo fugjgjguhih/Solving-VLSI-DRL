@@ -13,7 +13,22 @@ Given two pins, A = (x1, y1) and B = (x2, y2), where x1 ≤ x2, the following fo
 3. 45-Degree Connection: Connect A and B diagonally at a 45-degree angle by moving from (x1, y1) to (x2, y2) along the diagonal line.
 4. 135-Degree Connection: Connect A and B diagonally at a 135-degree angle by moving from (x1, y1) to (x2, y2) along the diagonal line.
 
+<div align="center">
 
+<style>
+    .grid-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+|                                                              |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="https://github.com/fugjgjguhih/image-hosting-service/blob/main/a1.png?raw=true" alt="图片1" class="grid-image"> | <img src="https://github.com/fugjgjguhih/image-hosting-service/blob/main/a2.png?raw=true" alt="图片2" class="grid-image"> |
+| <img src="https://github.com/fugjgjguhih/image-hosting-service/blob/main/a3.png?raw=true" alt="图片3" class="grid-image"> | <img src="https://github.com/fugjgjguhih/image-hosting-service/blob/main/a4.png?raw=true" alt="图片4" class="grid-image"> |
+
+</div>
 
 ## Installation
 
@@ -44,3 +59,6 @@ python test.py --vaild=${YOUR_VAILD_SET_PATH} --n_pin=${DEGREE_OF_POINT_SET}  --
 --model_dir=${SAVEPATH_OF_CHECKPOINT}
 ```
 
+#### result
+
+![](https://github.com/fugjgjguhih/image-hosting-service/blob/main/a5.png?raw=true)

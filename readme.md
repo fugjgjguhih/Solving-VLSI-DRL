@@ -15,13 +15,7 @@ Given two pins, A = (x1, y1) and B = (x2, y2), where x1 ≤ x2, the following fo
 
 <div align="center">
 
-<style>
-    .grid-image {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-    }
-</style>
+
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
